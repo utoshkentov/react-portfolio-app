@@ -1,26 +1,28 @@
+import {CssBaseline} from "@material-ui/core";
+import {Route, Switch, Redirect} from 'react-router-dom';
 import React from 'react';
-import logo from './logo.svg';
+
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Portfolio from './components/Portfolio';
+import Resume from "./components/Resume";
+import Contact from './components/Contact'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <React.Fragment>
+            <CssBaseline/>
+            <Navbar />
+            <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route exact path='/resume' component={Resume}/>
+                <Route exact path='/portfolio' component={Portfolio} />
+                <Route exact path='/contact' component={Contact} />
+                <Redirect to='/' />
+            </Switch>
+        </React.Fragment>
+    );
 }
 
 export default App;
